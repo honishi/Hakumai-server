@@ -1,0 +1,25 @@
+/home/ec2-user/dev/honishi/Hakumai-server/server/log/server.log
+/home/ec2-user/dev/honishi/Hakumai-server/server/log/monitor.log
+{
+    daily
+    # https://hackers-high.com/linux/man-jp-logrotate/#copytruncate
+    copytruncate
+    compress
+    compresscmd /bin/bzip2
+    missingok
+    rotate 10
+}
+
+# https://stackoverflow.com/a/55643449/13220031
+/home/ec2-user/dev/honishi/Hakumai-server/server/log/access.log
+/home/ec2-user/dev/honishi/Hakumai-server/server/log/error.log
+{
+    daily
+    compress
+    compresscmd /bin/bzip2
+    missingok
+    rotate 10
+    postrotate
+        kill -USR1 $(cat /run/gunicorn.pid)
+    endscript
+}

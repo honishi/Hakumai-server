@@ -1,0 +1,27 @@
+name: hakumai
+root: ~/
+
+windows:
+  - operation:
+      - cd ~/dev/honishi/Hakumai-server
+      - pwd
+      - ls -la
+  - app:
+      - cd ~/dev/honishi/Hakumai-server/server/log
+      - tail -F access.log | grep -E "(/oauth-callback|/api/v1/refresh-token)"
+  - server:
+      - cd ~/dev/honishi/Hakumai-server/server/log
+      - tail -F server.log
+  - monitor:
+      - cd ~/dev/honishi/Hakumai-server/server/log
+      - tail -F monitor.log
+  - access:
+      - cd ~/dev/honishi/Hakumai-server/server/log
+      - tail -F access.log
+  - error:
+      - cd ~/dev/honishi/Hakumai-server/server/log
+      - tail -F error.log
+  - work:
+      - pwd
+  - work:
+      - pwd
