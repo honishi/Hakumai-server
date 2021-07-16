@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def redirect_to_distribution_site():
+def show_top_page():
     return f"🥺 < {LAUNCH_DATETIME} / {MASKED_IP_ADDRESS}"
 
 
